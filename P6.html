@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+  <script src="http://dimplejs.org/dist/dimple.v2.1.6.min.js"></script>
+</head>
+
+<body>
+  
+<script type="text/javascript">
+  function draw(data) {
+    /*
+      D3.js setup code (taken from course)
+    */
+    "use strict";
+    var margin = 75,
+        width = 1400 - margin,
+        height = 600 - margin;
+
+    var svg = d3.select("body")
+      .append("svg")
+        .attr("width", width + margin)
+        .attr("height", height + margin)
+      .append('g')
+          .attr('class','chart');         
+        /*
+          Dimple.js Chart construction code
+        */
+        var myChart = new dimple.chart(svg, data);
+        myChart.addCategoryAxis("x", "Target Date to achieve reductions");
+        myChart.addCategoryAxis("y", "Target Reduction (% off Baseline)");
+        myChart.addMeasureAxis("z", "Number of Cities");
+        myChart.addSeries(["Number of Cities", "Africa", "Asia", "Australia_NZ", "Europe", "North America", "Latin America"], dimple.plot.bubble);
+        myChart.addLegend(180, 10, 360, 20, "right");
+        myChart.draw();
+        /*
+          Add horizontal line at 50%
+        */
+        svg.append("line")
+          .attr("x1", margin+65)
+          .attr("x2", 1250)
+          .attr("y1", 325)
+          .attr("y2", 325)
+          .style("stroke", "red")
+          .style("stroke-dasharray", "3");
+        /*
+          Add horizontal line at 85%
+        */
+        svg.append("line")
+          .attr("x1", margin+65)
+          .attr("x2", 1250)
+          .attr("y1", 180)
+          .attr("y2", 180)
+          .style("stroke", "blue")
+          .style("stroke-dasharray", "3");
+          /*
+            Add chart title
+          */
+          svg.append("text")
+          .attr("x", myChart._xPixels() + myChart._widthPixels() / 2)
+          .attr("y", myChart._yPixels() - 20)
+          .style("text-anchor", "middle")
+          .style("font-family", "sans-serif")
+          .style("font-weight", "bold")
+          .style("font-size", "20px")
+          .text("Carbon Emissions Reduction Targets set by CDP Cities");
+
+      //     legend = svg.append("g")
+    		// .attr("class","legend")
+    		// .attr("transform","translate(50,30)")
+		    // .style("font-size","12px")
+		    // .call(d3.legend)
+
+          
+
+    	};
+
+		d3.csv("data.csv", draw);
+
+</script>
+</body>
+
+</html>
