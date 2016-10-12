@@ -33,7 +33,7 @@
         myChart.addCategoryAxis("y", "Target Reduction (% off Baseline)");
         myChart.addMeasureAxis("z", "Number of Cities");
         myChart.addSeries(["Number of Cities", "Africa", "Asia", "Australia_NZ", "Europe", "North America", "Latin America"], dimple.plot.bubble);
-        myChart.addLegend(180, 10, 360, 20, "right");
+        //myChart.addLegend(180, 10, 360, 20, "right");
         myChart.draw();
         /*
           Add horizontal line at 50%
@@ -45,6 +45,13 @@
           .attr("y2", 325)
           .style("stroke", "red")
           .style("stroke-dasharray", "3");
+         
+         svg.append("text")
+          .attr("dx", margin + 65)
+          .attr("dy", 325)
+          .style("stroke", "red")
+          .text("UN Minimum Target: 50%")
+          .style("font-family", "sans-serif");
         /*
           Add horizontal line at 85%
         */
@@ -55,6 +62,14 @@
           .attr("y2", 180)
           .style("stroke", "blue")
           .style("stroke-dasharray", "3");
+
+         svg.append("text")
+         .attr("dx", margin + 65)
+         .attr("dy", 180)
+         .style("stroke", "blue")
+         .text("UN Maximum Target: 85%")
+         .style("font-family", "sans-serif")
+         .style("font-size", "16px");
           /*
             Add chart title
           */
@@ -66,14 +81,6 @@
           .style("font-weight", "bold")
           .style("font-size", "20px")
           .text("Carbon Emissions Reduction Targets set by CDP Cities");
-
-      //     legend = svg.append("g")
-    		// .attr("class","legend")
-    		// .attr("transform","translate(50,30)")
-		    // .style("font-size","12px")
-		    // .call(d3.legend)
-
-          
 
     	};
 
