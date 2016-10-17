@@ -11,9 +11,11 @@
   
 <script type="text/javascript">
 function draw(data) {
+    
     /*
     D3.js setup code (taken from course)
     */
+    
     "use strict";
     var margin = 75,
         width = 1400 - margin,
@@ -25,26 +27,28 @@ function draw(data) {
         .attr("height", height + margin)
         .append('g')
         .attr('class', 'chart');
+
     /*
     Dimple.js Chart construction code
     */
+
     var myChart = new dimple.chart(svg, data);
-    
     var x = myChart.addMeasureAxis("x","Emissions per Capita");
-    	x.fontSize = '15px';
-
-    var y = myChart.addPctAxis("y","Target Reduction");
-    	y.fontSize = '15px';
-    	// y.addOrderRule("Target Reduction");
-
+    	x.fontSize = '20px';
+        x.ticks = 20;
+    var y = myChart.addMeasureAxis("y","Target Reduction");
+    	y.fontSize = '20px';
+        // y.showPercent = true;
+    var color = myChart.addColorAxis("Target Date", ["#FF3300" , "#FFCC00", 
+        "#33CC00"]);
     myChart.addSeries("City", dimple.plot.bubble);
-
-    // var color = myChart.addColorAxis("Target Reduction (% off Baseline)", ["red", "yellow", "green"]);
-
+    // myChart.addLegend(100, 500, 1000, 90, "right", [x,y,color]);
     myChart.draw();
+
     /*
     Add horizontal line at 50%
     */
+
     // svg.append("line")
     //     .attr("x1", margin + 65)
     //     .attr("x2", 1250)
@@ -59,9 +63,11 @@ function draw(data) {
     //     .style("stroke", "red")
     //     .text("UN Minimum Target: 50%")
     //     .style("font-family", "sans-serif");
+
     /*
     Add horizontal line at 85%
     */
+
     // svg.append("line")
     //     .attr("x1", margin + 65)
     //     .attr("x2", 1250)
@@ -77,20 +83,22 @@ function draw(data) {
     //     .text("UN Maximum Target: 85%")
     //     .style("font-family", "sans-serif")
     //     .style("font-size", "16px");
+
     /*
     Add chart title
     */
+
     svg.append("text")
         .attr("x", myChart._xPixels() + myChart._widthPixels() / 2)
         .attr("y", myChart._yPixels() - 20)
         .style("text-anchor", "middle")
         .style("font-family", "sans-serif")
         .style("font-weight", "bold")
-        .style("font-size", "20px")
+        .style("font-size", "25px")
         .text("Carbon Emissions Reduction Targets set by Cities across the world");
 };
 
-d3.csv("data.csv", draw);
+d3.csv("data_previous.csv", draw);
 
 </script>
 </body>

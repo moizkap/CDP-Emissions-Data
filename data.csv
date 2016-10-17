@@ -1,4 +1,4 @@
-City,Country,Region,Region Classifier,Measurement Year, 2016 Disclosure Emissions (mt CO2e) ,Emissions per Capita ,Emissions per GDP ,Baseline Year, Baseline Emissions (mt CO2e) ,Target Reduction,Target Date, City Target at Target Date ,City Reduction Rate,Projected Emissions at 2050,Science Based Target Reduction,Science Based Emissions at 2050,% Difference,ipcc_version,Development Classification,ipcc_year_index,current_year_index,year_2050_index, Current Population ,Current Population Year,GDP 2010 ($B),GDP 2025 ($B),GDP % Chg,Continuously Compounded,Pop Mult Effect,Regional Avg Mult Effect
+City,Country,Region,Region Classifier,Measurement Year, 2016 Disclosure Emissions (mt CO2e) ,Emissions per Capita,Emissions per GDP ,Baseline Year, Baseline Emissions (mt CO2e) ,Target Reduction,Target Date, City Target at Target Date ,City Reduction Rate,Projected Emissions at 2050,Science Based Target Reduction,Science Based Emissions at 2050,% Difference,ipcc_version,Development Classification,ipcc_year_index,current_year_index,year_2050_index, Current Population ,Current Population Year,GDP 2010 ($B),GDP 2025 ($B),GDP % Chg,Continuously Compounded,Pop Mult Effect,Regional Avg Mult Effect
 Canberra,Australia,Australia_NZ,2,2015,"4,003,900",10, nan ,1990,"3,185,500",100,2060,0,-41.13%,2,85%,"477,825",-109,AR4,Developing,-8,6,36,"400,000",2016,,,,,,
 Stockholm,Sweden,Europe,4,2012,"2,511,000",3, nan ,1990,"3,668,000",100,2040,0,-57.86%,0,85%,"550,200",-18,AR4,Developed,4,5,41,"901,989",2014,,,,,,
 Oslo,Norway,Europe,4,2013,"1,340,422",2,"5,362",1991,"1,200,000",100,2050,0,-47.14%,0,50%,"600,000",50,AR4,Developed,10,24,36,"658,390",2016,250,391,0.564,0.029816443,1.756272019,2.510312858
@@ -8,7 +8,7 @@ Copenhagen,Denmark,Europe,4,2015,"1,450,358",2, nan ,2010,"2,240,000",100,2025,0
 Turku,Finland,Europe,4,2013,"1,107,500",6, nan ,2012,"1,051,000",100,2040,0,-98.86%,0,85%,"157,650",-104,AR4,Developed,-10,24,36,"186,000",2015,,,,,,
 Austin,USA,North_America_Developed,6,2013,"13,700,000",15, nan ,2010,"14,500,000",90,2050,"1,450,000",-5.76%,"1,628,248",85%,"2,175,000",-93,AR4,Developed,10,4,36,"888,204",2015,,,,,,
 Chicago,USA,North_America_Developed,6,2010,"33,500,000",12, nan ,1990,"32,300,000",80,2050,"6,460,000",-2.68%,"11,456,839",85%,"4,845,000",-63,AR4,Developed,11,0,39,"2,719,000",2013,,,,,,
-Hamburg,Germany,Europe,4,2013,"17,755",0, nan ,1990,"20,727,000",80,2050,"4,145,400",-2.68%,"6,581",85%,"3,109,050",200,AR4,Developed,-12,1,37,"1,762,791",2014,,,,,,
+Hamburg,Germany,Europe,4,2013,"17,755",0.01, nan ,1990,"20,727,000",80,2050,"4,145,400",-2.68%,"6,581",85%,"3,109,050",200,AR4,Developed,-12,1,37,"1,762,791",2014,,,,,,
 "Portland, OR",USA,North_America_Developed,6,2014,"6,974,544",11, nan ,1990,"8,989,460",80,2050,"1,797,892",-2.68%,"2,655,424",72%,"2,517,049",-52,AR5,Developed,-3,3,40,"619,360",2014,,,,,,
 San Francisco,USA,North_America_Developed,6,2012,"5,381,687",6, nan ,1990,"6,201,949",80,2050,"1,240,390",-2.68%,"1,941,947",85%,"930,292",-29,AR4,Developed,10,20,40,"864,816",2015,,,,,,
 Santa Monica,USA,North_America_Developed,6,2011,"705,443",8, nan ,1990,"924,293",80,2050,"184,859",-2.68%,"247,817",85%,"138,644",-29,AR4,Developed,-10,0,40,"92,000",2014,,,,,,
@@ -61,10 +61,9 @@ Barreiro,Portugal,Europe,4,2014,"290,849",4,"1,081",2008,"347,987",20,2020,"278,
 Moita,Portugal,Europe,4,2013,"96,508",1, nan ,2008,"15,177",20,2020,"12,142",-1.86%,"48,502",85%,"2,277",-91,AR4,Developed,1,14,35,"66,029",2011,,,,,,
 Atlanta,USA,North_America_Developed,6,2014,"9,024,235",20,"33,423",2009,"10,267,363",20,2020,"8,213,890",-2.03%,"4,347,608",85%,"1,540,104",-124,AR4,Developed,-10,23,37,"443,775",2013,270,410,0.518518519,0.027849013,2.114449055,2.510312858
 Yonkers,USA,North_America_Developed,6,2010,"1,248,650",6, nan ,2010,"844,276",20,2020,"675,421",-2.23%,"511,447",85%,"126,641",-50,AR4,Developed,10,15,45,"199,766",2013,,,,,,
-Zaragoza,Spain,Europe,4,2014,"1,785,604",0, nan ,2010,"1,237,553",20,2020,"990,042",-2.23%,"799,667",85%,"185,633",-101,AR4,Developed,8,5,37,"7,000,463",2015,,,,,,
+Zaragoza,Spain,Europe,4,2014,"1,785,604",0.26, nan ,2010,"1,237,553",20,2020,"990,042",-2.23%,"799,667",85%,"185,633",-101,AR4,Developed,8,5,37,"7,000,463",2015,,,,,,
 Columbus,USA,North_America_Developed,6,2015,"10,983,600",13,"107,682",2013,"10,901,086",20,2020,"8,720,869",-3.19%,"3,599,106",85%,"1,635,163",-32,AR4,Developed,-10,23,37,"835,957",2014,102,157,0.539215686,0.028751533,2.029868122,2.510312858
 "London, ON",Canada,North_America_Developed,6,2014,"3,070,000",8, nan ,1990,"3,290,000",15,2020,"2,796,500",-0.54%,"2,526,045",85%,"493,500",-109,AR4,Developing,5,7,38,"375,000",2014,,,,,,
 Baltimore,USA,North_America_Developed,6,2010,"7,579,144",12, nan ,2010,"7,579,144",15,2020,"6,442,272",-1.63%,"3,956,361",85%,"1,136,872",200,AR4,Developed,10,22,38,"622,793",2014,,,,,,
-La Paz,Bolivia,Latin_America,5,2012,"1,426,534",125, nan ,2014,708,14.15,2018,608,-3.81%,"334,823",85%,106,31,AR4,Developed,-6,9,35,"11,411",2015,,,,,,
 Benicia,USA,North_America_Developed,6,2010,"688,706",25, nan ,2000,"487,035",10,2020,"438,332",-0.53%,"557,852",50%,"243,518",94,AR4,Developed,-5,5,40,"27,450",2014,,,,,,
 Cape Town,South Africa,Africa_Developed,1,2012,"22,643,846",6, nan ,2007,"20,550,172",10,2012,"18,495,155",-2.11%,"10,167,010",85%,"3,082,526",-104,AR4,Developed,7,7,36,"3,918,830",2014,,,,,,
