@@ -29,56 +29,54 @@ function draw(data) {
     Dimple.js Chart construction code
     */
     var myChart = new dimple.chart(svg, data);
-    var x = myChart.addCategoryAxis("x",
-        "Target Date to achieve reductions");
-    // 'red' for lower values .. 'green' for higher values:
-    var color = myChart.addColorAxis("Target Reduction (% off Baseline)", [
-        "red", "yellow", "green"
-    ]);
-    var y = myChart.addCategoryAxis("y",
-        "Target Reduction (% off Baseline)");
-    var z = myChart.addMeasureAxis("z", "Number of Cities");
-    myChart.addSeries(["Number of Cities", "Africa", "Asia", "Australia_NZ",
-        "Europe", "North America", "Latin America"
-    ], dimple.plot.bubble);
-    myChart.addLegend(180, 10, 360, 20, "right");
+    
+    var x = myChart.addMeasureAxis("x","Emissions per Capita");
+    	x.fontSize = '15px';
+
+    var y = myChart.addPctAxis("y","Target Reduction");
+    	y.fontSize = '15px';
+    	// y.addOrderRule("Target Reduction");
+
+    myChart.addSeries("City", dimple.plot.bubble);
+
+    // var color = myChart.addColorAxis("Target Reduction (% off Baseline)", ["red", "yellow", "green"]);
+
     myChart.draw();
     /*
     Add horizontal line at 50%
     */
-    svg.append("line")
-        .attr("x1", margin + 65)
-        .attr("x2", 1250)
-        .attr("y1", 325)
-        .attr("y2", 325)
-        //.attr("data-legend",function(d) { return d.name})
-        .style("stroke", "red")
-        .style("stroke-dasharray", "3");
+    // svg.append("line")
+    //     .attr("x1", margin + 65)
+    //     .attr("x2", 1250)
+    //     .attr("y1", 325)
+    //     .attr("y2", 325)
+    //     .style("stroke", "red")
+    //     .style("stroke-dasharray", "3");
 
-    svg.append("text")
-        .attr("dx", margin + 1000)
-        .attr("dy", 325)
-        .style("stroke", "red")
-        .text("UN Minimum Target: 50%")
-        .style("font-family", "sans-serif");
+    // svg.append("text")
+    //     .attr("dx", margin + 1000)
+    //     .attr("dy", 325)
+    //     .style("stroke", "red")
+    //     .text("UN Minimum Target: 50%")
+    //     .style("font-family", "sans-serif");
     /*
     Add horizontal line at 85%
     */
-    svg.append("line")
-        .attr("x1", margin + 65)
-        .attr("x2", 1250)
-        .attr("y1", 180)
-        .attr("y2", 180)
-        .style("stroke", "green")
-        .style("stroke-dasharray", "3");
+    // svg.append("line")
+    //     .attr("x1", margin + 65)
+    //     .attr("x2", 1250)
+    //     .attr("y1", 180)
+    //     .attr("y2", 180)
+    //     .style("stroke", "green")
+    //     .style("stroke-dasharray", "3");
 
-    svg.append("text")
-        .attr("dx", margin + 1000)
-        .attr("dy", 180)
-        .style("stroke", "green")
-        .text("UN Maximum Target: 85%")
-        .style("font-family", "sans-serif")
-        .style("font-size", "16px");
+    // svg.append("text")
+    //     .attr("dx", margin + 1000)
+    //     .attr("dy", 180)
+    //     .style("stroke", "green")
+    //     .text("UN Maximum Target: 85%")
+    //     .style("font-family", "sans-serif")
+    //     .style("font-size", "16px");
     /*
     Add chart title
     */
@@ -90,12 +88,6 @@ function draw(data) {
         .style("font-weight", "bold")
         .style("font-size", "20px")
         .text("Carbon Emissions Reduction Targets set by Cities across the world");
-
-    legend = svg.append("g")
-    	.attr("class","legend")
-    	.attr("transform","translate(50,30)")
-    	.style("font-size","12px")
-    	.call(d3.legend)
 };
 
 d3.csv("data.csv", draw);
