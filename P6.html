@@ -5,11 +5,14 @@
   <meta charset="utf-8">
   <script src="http://d3js.org/d3.v3.min.js"></script>
   <script src="http://dimplejs.org/dist/dimple.v2.1.6.min.js"></script>
+  <script src="http://benschmidt.org/colorbar/colorbar.js"></script>
 </head>
+
 
 <body>
   
 <script type="text/javascript">
+
 function draw(data) {
     
     /*
@@ -33,16 +36,30 @@ function draw(data) {
     */
 
     var myChart = new dimple.chart(svg, data);
-    var x = myChart.addMeasureAxis("x","Emissions per Capita");
+    var x = myChart.addMeasureAxis("x","Emissions per Capita (metric tonnes CO2e per person)");
     	x.fontSize = '20px';
         x.ticks = 20;
-    var y = myChart.addMeasureAxis("y","Target Reduction");
+    var y = myChart.addMeasureAxis("y","Target Reduction (% off Baseline)");
     	y.fontSize = '20px';
-        // y.showPercent = true;
-    var color = myChart.addColorAxis("Target Date", ["#FF3300" , "#FFCC00", 
-        "#33CC00"]);
-    myChart.addSeries("City", dimple.plot.bubble);
-    // myChart.addLegend(100, 500, 1000, 90, "right", [x,y,color]);
+    var color = myChart.addColorAxis("Target Date", ["#FF3300" , "#FFCC00", "#33CC00"]);
+    var mySeries = myChart.addSeries([
+    	"City", 
+    	"Emissions per Capita (metric tonnes CO2e per person)",
+    	"Target Reduction (% off Baseline)",
+    	"Target Date"
+    	], dimple.plot.bubble);
+
+    mySeries.getTooltipText = function (e) {
+                return [
+                    "City: " + e.aggField[0],
+                    "Emissions per Capita: " + e.aggField[1] + " mtCO2e/person",
+                    "Target Reduction: " + e.aggField[2] + "%",
+                    "Target Date: " + e.aggField[3]
+                ];
+            };
+
+
+    var myLegend = myChart.addLegend("90%", "20%", "10%", "30%", "right");
     myChart.draw();
 
     /*
@@ -54,14 +71,14 @@ function draw(data) {
     //     .attr("x2", 1250)
     //     .attr("y1", 325)
     //     .attr("y2", 325)
-    //     .style("stroke", "red")
+    //     .style("stroke", "blue")
     //     .style("stroke-dasharray", "3");
 
     // svg.append("text")
-    //     .attr("dx", margin + 1000)
+    //     .attr("dx", margin + 920)
     //     .attr("dy", 325)
-    //     .style("stroke", "red")
-    //     .text("UN Minimum Target: 50%")
+    //     .style("stroke", "blue")
+    //     .text("UN Recommended Target, min: 50%")
     //     .style("font-family", "sans-serif");
 
     /*
@@ -73,16 +90,26 @@ function draw(data) {
     //     .attr("x2", 1250)
     //     .attr("y1", 180)
     //     .attr("y2", 180)
-    //     .style("stroke", "green")
+    //     .style("stroke", "blue")
     //     .style("stroke-dasharray", "3");
 
     // svg.append("text")
-    //     .attr("dx", margin + 1000)
+    //     .attr("dx", margin + 920)
     //     .attr("dy", 180)
-    //     .style("stroke", "green")
-    //     .text("UN Maximum Target: 85%")
+    //     .style("stroke", "blue")
+    //     .text("UN Recommended Target, max: 85%")
     //     .style("font-family", "sans-serif")
     //     .style("font-size", "16px");
+
+    svg.append("rect")
+        .attr("x", margin + 65)
+        .attr("y", 130)
+        .attr("width", 1119)
+        .attr("height", 170)
+        .style("stroke", "blue")
+        .style("stroke-dasharray", "3")
+        .style("fill", "#E3F2FD")
+        .style("fill-opacity", "0.2");
 
     /*
     Add chart title
@@ -98,9 +125,10 @@ function draw(data) {
         .text("Carbon Emissions Reduction Targets set by Cities across the world");
 };
 
-d3.csv("data_previous.csv", draw);
+d3.csv("data.csv", draw);
 
 </script>
+
 </body>
 
 </html>
