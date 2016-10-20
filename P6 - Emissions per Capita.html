@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+  <script src="http://dimplejs.org/dist/dimple.v2.1.6.min.js"></script>
+  <script src="http://benschmidt.org/colorbar/colorbar.js"></script>
+</head>
+
+
+<body>
+  
+<script type="text/javascript">
+
+function draw(data) {
+    
+    
+    // D3.js setup code (taken from course)
+    "use strict";
+    var margin = 75,
+        width = 1400 - margin,
+        height = 600 - margin;
+
+    var svg = d3.select("body")
+        .append("svg")
+        .attr("width", width + margin)
+        .attr("height", height + margin)
+        .append('g')
+        .attr('class', 'chart');
+
+    // Place rectangle and text
+	 svg.append("text")
+	    .attr("dx", margin + 875)
+	    .attr("dy", 205)
+	    .style("stroke", "blue")
+	    .style("font-family", "sans-serif")
+	    .text("According to the UN IPCC, cities with ");
+
+	svg.append("text")
+	    .attr("dx", margin + 875)
+	    .attr("dy", 225)
+	    .style("stroke", "blue")
+	    .style("font-family", "sans-serif")
+	    .text("50-85% target reductions are");
+
+	svg.append("text")
+	    .attr("dx", margin + 875)
+	    .attr("dy", 245)
+	    .style("stroke", "blue")
+	    .style("font-family", "sans-serif")
+	    .text("on a path towards climate stabilization");
+	    
+	svg.append("rect")
+	    .attr("x", margin + 65)
+	    .attr("y", 130)
+	    .attr("width", 1119)
+	    .attr("height", 170)
+	    .style("stroke", "blue")
+	    .style("stroke-dasharray", "3")
+	    .style("fill", "#E3F2FD")
+	    .style("fill-opacity", "0.2");
+
+    // Dimple.js Chart construction code
+    var myChart = new dimple.chart(svg, data);
+    var x = myChart.addMeasureAxis("x","Emissions per Capita (metric tonnes CO2e per person)");
+    	x.fontSize = '20px';
+        x.ticks = 20;
+    var y = myChart.addMeasureAxis("y","Target Reduction (% off Baseline)");
+    	y.fontSize = '20px';
+    var color = myChart.addColorAxis("Target Date", ["#FF3300" , "#FFCC00", "#33CC00"]);
+    var mySeries = myChart.addSeries([
+    	"City", 
+    	"Emissions per Capita (metric tonnes CO2e per person)",
+    	"Target Reduction (% off Baseline)",
+    	"Target Date"
+    	], dimple.plot.bubble);
+    mySeries.getTooltipText = function (e) {
+                return [
+                    "City: " + e.aggField[0],
+                    "Emissions per Capita: " + e.aggField[1] + " mtCO2e/person",
+                    "Target Reduction: " + e.aggField[2] + "%",
+                    "Target Date: " + e.aggField[3]
+                ];
+            };
+    var myLegend = myChart.addLegend("90%", "20%", "10%", "30%", "right");
+    myChart.draw();
+
+    // Add chart title
+	svg.append("text")
+	    .attr("x", myChart._xPixels() + myChart._widthPixels() / 2)
+	    .attr("y", myChart._yPixels() - 20)
+	    .style("text-anchor", "middle")
+	    .style("font-family", "sans-serif")
+	    .style("font-weight", "bold")
+	    .style("font-size", "25px")
+	    .text("Cities across the world need to set ambitious carbon emissions targets");
+    
+};
+
+
+
+d3.csv("data.csv", draw);
+
+</script>
+
+</body>
+
+</html>
+
